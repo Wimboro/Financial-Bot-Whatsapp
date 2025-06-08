@@ -1,3 +1,4 @@
+<!-- GitAds-Verify: FO6VSTATCSXPFKUAAARIBTWPYM1P4QCW -->
 # WhatsApp Financial Bot
 
 A sophisticated WhatsApp bot that tracks income and expenses using Google's Gemini AI for natural language processing and image analysis, with Google Sheets for data storage.
