@@ -1,5 +1,5 @@
 {
-  "name": "whatsapp-financial-bot",
+  "name": "Financial-Bot-Whatsapp",
   "version": "1.0.0",
   "description": "WhatsApp bot for income and expense tracking using Gemini AI and Google Sheets",
   "main": "src/index.js",
