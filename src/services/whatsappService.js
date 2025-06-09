@@ -125,6 +125,8 @@ class WhatsAppService {
 
     async handleTextMessage(message, messageBody) {
         try {
+            const phoneNumber = message.from.replace('@c.us', '');
+            
             // First, check if this is a query for financial data
             if (this.queryService) {
                 console.log('Analyzing message intent...');
@@ -158,14 +160,12 @@ class WhatsAppService {
                 return;
             }
 
-            // Save to Google Sheets
+            // Save to Google Sheets with phone number
             if (validTransactions.length === 1) {
-                await this.sheetsService.addTransaction(validTransactions[0]);
+                await this.sheetsService.addTransaction(validTransactions[0], phoneNumber);
             } else {
-                await this.sheetsService.addMultipleTransactions(validTransactions);
+                await this.sheetsService.addMultipleTransactions(validTransactions, phoneNumber);
             }
-
-
 
             // Send confirmation
             let response = `✅ Tercatat ${validTransactions.length} transaksi:\n\n`;
@@ -184,6 +184,8 @@ class WhatsAppService {
 
     async handleMediaMessage(message) {
         try {
+            const phoneNumber = message.from.replace('@c.us', '');
+            
             console.log('Processing image message...');
             const media = await message.downloadMedia();
             
@@ -213,14 +215,12 @@ class WhatsAppService {
                 return;
             }
 
-            // Save to Google Sheets
+            // Save to Google Sheets with phone number
             if (validTransactions.length === 1) {
-                await this.sheetsService.addTransaction(validTransactions[0]);
+                await this.sheetsService.addTransaction(validTransactions[0], phoneNumber);
             } else {
-                await this.sheetsService.addMultipleTransactions(validTransactions);
+                await this.sheetsService.addMultipleTransactions(validTransactions, phoneNumber);
             }
-
-
 
             // Send confirmation
             let response = `📸 Struk diproses dan tercatat ${validTransactions.length} transaksi:\n\n`;

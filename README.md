@@ -1,7 +1,3 @@
-<!-- GitAds-Verify: FO6VSTATCSXPFKUAAARIBTWPYM1P4QCW -->
-## GitAds Sponsored
-[![Sponsored by GitAds](https://gitads.dev/v1/ad-serve?source=wimboro/financial-bot-whatsapp@github)](https://gitads.dev/v1/ad-track?source=wimboro/financial-bot-whatsapp@github)
-
 # WhatsApp Financial Bot
 
 A sophisticated WhatsApp bot that tracks income and expenses using Google's Gemini AI for natural language processing and image analysis, with Google Sheets for data storage.

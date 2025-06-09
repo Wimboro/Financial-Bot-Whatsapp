@@ -63,15 +63,16 @@ class SheetsService {
         }
     }
 
-    async addTransaction(transaction) {
+    async addTransaction(transaction, phoneNumber = null) {
         try {
             const timestamp = moment().format('YYYY-MM-DD HH:mm:ss');
+            const userIdentifier = phoneNumber || this.userId; // Use phone number if provided, fallback to userId
             const row = [
                 transaction.date,
                 transaction.amount,
                 transaction.category,
                 transaction.description,
-                this.userId,
+                userIdentifier,
                 timestamp
             ];
 
@@ -84,7 +85,7 @@ class SheetsService {
                 }
             });
 
-            console.log('Transaction added to sheet:', transaction);
+            console.log('Transaction added to sheet:', transaction, 'User:', userIdentifier);
             return response.data;
         } catch (error) {
             console.error('Error adding transaction to sheet:', error);
@@ -92,15 +93,16 @@ class SheetsService {
         }
     }
 
-    async addMultipleTransactions(transactions) {
+    async addMultipleTransactions(transactions, phoneNumber = null) {
         try {
             const timestamp = moment().format('YYYY-MM-DD HH:mm:ss');
+            const userIdentifier = phoneNumber || this.userId; // Use phone number if provided, fallback to userId
             const rows = transactions.map(transaction => [
                 transaction.date,
                 transaction.amount,
                 transaction.category,
                 transaction.description,
-                this.userId,
+                userIdentifier,
                 timestamp
             ]);
 
@@ -113,7 +115,7 @@ class SheetsService {
                 }
             });
 
-            console.log(`${transactions.length} transactions added to sheet`);
+            console.log(`${transactions.length} transactions added to sheet for user:`, userIdentifier);
             return response.data;
         } catch (error) {
             console.error('Error adding multiple transactions to sheet:', error);
